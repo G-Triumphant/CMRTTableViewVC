@@ -1,0 +1,21 @@
+# Uncomment the next line to define a global platform for your project
+# platform :ios, '9.0'
+pod 'CYLTabBarController', '~> 1.24.0'
+pod 'MPMCategory'
+target 'CMRTTableViewVC' do
+  # Uncomment the next line if you're using Swift or would like to use dynamic frameworks
+  # use_frameworks!
+
+  # Pods for CMRTTableViewVC
+
+  target 'CMRTTableViewVCTests' do
+    inherit! :search_paths
+    # Pods for testing
+  end
+
+  target 'CMRTTableViewVCUITests' do
+    inherit! :search_paths
+    # Pods for testing
+  end
+
+end

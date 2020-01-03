@@ -8,7 +8,12 @@
 
 #import "ViewController.h"
 
-@interface ViewController ()
+#import "CMComponent/CMBaseTableView.h"
+#import "Custom/CMVerticalListComponent.h"
+
+@interface ViewController ()<CMTableComponentDelegate>
+
+@property (nonatomic, strong) CMBaseTableView *tableView;
 
 @end
 
@@ -16,17 +21,26 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+
+    [self.view addSubview:self.tableView];
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+- (void)tableComponent:(id<CMTableComponent>)component didSelectItemAtIndex:(NSInteger)index {
+    NSLog(@"%ld", index);
 }
-*/
+
+- (CMBaseTableView *)tableView {
+    if (!_tableView) {
+        _tableView = [[CMBaseTableView alloc] initWithFrame:self.view.bounds style:UITableViewStyleGrouped type:CMSectionTypeForMoreGrouped];
+        CMVerticalListComponent *verComponent = [CMVerticalListComponent componentWithTableView:self.tableView delegate:self];
+        [verComponent loadDataSuccess:^{
+            [self.tableView reloadData];
+        } error:^{
+        }];
+        _tableView.components = @[verComponent];
+        
+    }
+    return _tableView;
+}
 
 @end

@@ -6,7 +6,12 @@
 //
 
 #import <Foundation/Foundation.h>
+
 #import "CMTableComponent.h"
+
+typedef void(^RequestSuccessBlock)();
+
+typedef void(^RequestErrorBlock)();
 
 /**
  分区基类
@@ -34,5 +39,9 @@
 - (void)registerWithTableView:(UITableView *)tableView;
 
 - (void)setNeedUpdateHeightForSection:(NSInteger)section;
+
+- (void)loadDataSuccess:(RequestSuccessBlock)success error:(RequestErrorBlock)error;
+
+- (void)loadMoreDataSuccess:(RequestSuccessBlock)success error:(RequestErrorBlock)error;
 
 @end

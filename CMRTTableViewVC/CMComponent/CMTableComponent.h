@@ -7,11 +7,10 @@
 //
 
 #import <Foundation/Foundation.h>
+
 #import <UIKit/UIKit.h>
 
-
 @protocol CMTableComponent;
-
 
 @protocol CMTableComponentDelegate <NSObject>
 
@@ -38,6 +37,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 // 分区cell标识
 - (NSString *)cellIdentifier;
+
+// 分区section个数
+- (NSInteger)numberOfSections;
 
 // 分区row个数
 - (NSInteger)numberOfItems;

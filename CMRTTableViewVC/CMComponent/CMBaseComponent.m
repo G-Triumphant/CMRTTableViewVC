@@ -49,6 +49,10 @@
     return self;
 }
 
+- (NSInteger)numberOfSections {
+    return 0;
+}
+
 - (NSInteger)numberOfItems {
     return 0;
 }
@@ -102,6 +106,14 @@
         [self.tableView reloadData];
     });
     CFRunLoopAddObserver(CFRunLoopGetMain(), observer, kCFRunLoopDefaultMode);
+}
+
+- (void)loadDataSuccess:(RequestSuccessBlock)success error:(RequestErrorBlock)error {
+    [self.tableView reloadData];
+}
+
+- (void)loadMoreDataSuccess:(RequestSuccessBlock)success error:(RequestErrorBlock)error {
+    [self.tableView reloadData];
 }
 
 @end

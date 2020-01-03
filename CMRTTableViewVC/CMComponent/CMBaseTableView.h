@@ -12,12 +12,15 @@
 
 typedef NS_ENUM(NSUInteger, CMSectionType) {
     CMSectionTypePlain,
-    CMSectionTypeForGrouped,
+    CMSectionTypeForSingleGrouped,
+    CMSectionTypeForMoreGrouped,
 };
 
 NS_ASSUME_NONNULL_BEGIN
 
 @interface CMBaseTableView : UITableView
+
+- (instancetype)initWithFrame:(CGRect)frame style:(UITableViewStyle)style type:(CMSectionType)type;
 
 @property (nonatomic, strong) NSArray <id<CMTableComponent>> *components;
 

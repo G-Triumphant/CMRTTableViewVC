@@ -8,9 +8,18 @@
 
 #import <UIKit/UIKit.h>
 
+#import "CMTableComponent.h"
+
 NS_ASSUME_NONNULL_BEGIN
 
 @interface CMComponentController : UIViewController
+
+@property (nonatomic, readonly, strong) UITableView *tableView;
+
+
+@property (nonatomic, strong) NSArray <id<CMTableComponent>> *components;
+
+- (CGRect)tableViewRectForBounds:(CGRect)bounds;
 
 @end
 
